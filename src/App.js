@@ -1,8 +1,11 @@
+import GameBoard from "./components/GameBoard"
 
 function App() {
   return (
-    <h1>Memory game</h1>
-  );
+    <div className="h-screen flex flex-col justify-center items-center">
+      <GameBoard />
+    </div>
+  )
 }
 
-export default App;
+export default App
