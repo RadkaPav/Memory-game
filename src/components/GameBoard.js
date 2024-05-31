@@ -8,6 +8,7 @@ const GameBoard = () => {
     const [dataArray, setDataArray] = useState([])
     const [count, setCount] = useState(0)
     const [gameOver, setGameOver] = useState(false)
+    const [score, setScore] = useState(localStorage.getItem("score"))
 
     const newGame = () => {
         setFirstCard(null)
@@ -18,6 +19,7 @@ const GameBoard = () => {
     }
 
     const handleSelectedCard = (item) => {
+        console.log(item);
         const audio = new Audio(item.sound)
         audio.play()
         if (!firstCard) {
@@ -51,11 +53,12 @@ const GameBoard = () => {
                 })
             }
         }
-        if (dataArray.every(item => item.matched)) setGameOver(true)
-
+        if (dataArray.every(item => item.matched)) {
+            setGameOver(true)
+            if (count < score) setScore(count)
+            localStorage.setItem("score", count)
+        }
     })
-
-
 
     useEffect(() => {
         newGame()
@@ -76,6 +79,9 @@ const GameBoard = () => {
                             item={card}
                             handleSelectedCard={handleSelectedCard} />
                     })}
+                </div>
+                <div className="text-center mt-4">
+                    <p>Nejlepší skóre: {score}</p>
                 </div>
                     {gameOver && <button className="block mx-auto bg-green-700 px-2 py-1 rounded-md mt-2" onClick={newGame}>Nová hra</button>}
             </div>
