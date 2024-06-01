@@ -23,6 +23,7 @@ const GameBoard = () => {
         setDataArray(finalArray)
         setScore(localStorage.getItem(`score${option}`))
     }
+
     const changeDifficulty = (option) => {
         setOption(option)
         createArray(option)
@@ -42,13 +43,10 @@ const GameBoard = () => {
         audio.play()
         if (!firstCard) {
             setFirstCard(item)
-        }
-        else if (!secondCard) {
+        } else if (!secondCard) {
             setSecondCard(item)
             setCount(count + 1)
         }
-        console.log(score)
-        console.log(count)
     }
 
     useEffect(() => {
@@ -58,8 +56,7 @@ const GameBoard = () => {
                     setFirstCard(null)
                     setSecondCard(null)
                 }, 1500)
-            }
-            if (firstCard.name === secondCard.name) {
+            } else {
                 setFirstCard(null)
                 setSecondCard(null)
                 return setDataArray((prevArray) => {
