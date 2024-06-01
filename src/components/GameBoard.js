@@ -9,18 +9,19 @@ const GameBoard = () => {
     const [dataArray, setDataArray] = useState([])
     const [count, setCount] = useState(0)
     const [gameOver, setGameOver] = useState(false)
-    const [score, setScore] = useState(localStorage.getItem("score"))
+    const [score, setScore] = useState(localStorage.getItem("score6"))
     const [option, setOption] = useState(6)
 
     const createArray = (option) => {
         const dataArray = data.sort(function () { return Math.random() - 0.5 })
         const selectionArray = dataArray.slice(0, option)
-        const duplicatedArray = [...selectionArray, ...selectionArray]
+        const duplicatedArray = [...selectionArray, ...selectionArray].sort(function () { return Math.random() - 0.5 })
         let finalArray = []
         for (let i = 0; i < duplicatedArray.length; i++) {
             finalArray.push({ ...duplicatedArray[i], id: i })
         }
         setDataArray(finalArray)
+        setScore(localStorage.getItem(`score${option}`))
     }
     const changeDifficulty = (option) => {
         setOption(option)
@@ -46,6 +47,8 @@ const GameBoard = () => {
             setSecondCard(item)
             setCount(count + 1)
         }
+        console.log(score)
+        console.log(count)
     }
 
     useEffect(() => {
@@ -72,8 +75,12 @@ const GameBoard = () => {
         }
         if (dataArray.every(item => item.matched)) {
             setGameOver(true)
-            if (count < score) setScore(count)
-            localStorage.setItem("score", count)
+            if (count < score || score === null) {
+                setScore(count)
+                if (option === 3) localStorage.setItem("score3", count)
+                else if (option === 6) localStorage.setItem("score6", count)
+                else localStorage.setItem("score12", count)
+            }
         }
     })
 
