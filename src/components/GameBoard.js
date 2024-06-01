@@ -1,4 +1,5 @@
 import Card from "./Card"
+import Button from "./Button"
 import data from "../data/animals-game"
 import { useState, useEffect } from "react"
 
@@ -66,7 +67,12 @@ const GameBoard = () => {
 
     return (
         <div>
-            <h1 className="text-3xl text-center mb-8">Memory game</h1>
+            <div className="flex justify-evenly">
+                <Button name="Easy" />
+                <Button name="Medium" />
+                <Button name="Hard" />
+            </div>
+            <h1 className="text-3xl text-center mt-3 mb-4">Memory game</h1>
             <p className="text-center text-xl mb-5">{count}</p>
             <div className="w-[400px] lg:w-[550px]">
                 <div className="flex flex-wrap gap-1 justify-center">
