@@ -10,17 +10,33 @@ const GameBoard = () => {
     const [count, setCount] = useState(0)
     const [gameOver, setGameOver] = useState(false)
     const [score, setScore] = useState(localStorage.getItem("score"))
+    const [option, setOption] = useState(6)
+
+    const createArray = (option) => {
+        const dataArray = data.sort(function () { return Math.random() - 0.5 })
+        const selectionArray = dataArray.slice(0, option)
+        const duplicatedArray = [...selectionArray, ...selectionArray]
+        let finalArray = []
+        for (let i = 0; i < duplicatedArray.length; i++) {
+            finalArray.push({ ...duplicatedArray[i], id: i })
+        }
+        setDataArray(finalArray)
+    }
+    const changeDifficulty = (option) => {
+        setOption(option)
+        createArray(option)
+    }
 
     const newGame = () => {
         setFirstCard(null)
         setSecondCard(null)
         setCount(0)
         setGameOver(false)
-        setDataArray(data.sort(function () { return Math.random() - 0.5 }))
+        createArray(6)
+        setOption(6)
     }
 
     const handleSelectedCard = (item) => {
-        console.log(item);
         const audio = new Audio(item.sound)
         audio.play()
         if (!firstCard) {
@@ -68,28 +84,35 @@ const GameBoard = () => {
     return (
         <div>
             <div className="flex justify-evenly">
-                <Button name="Easy" />
-                <Button name="Medium" />
-                <Button name="Hard" />
+                <Button name="Easy" changeDifficulty={changeDifficulty} option={3} />
+                <Button name="Medium" changeDifficulty={changeDifficulty} option={6} />
+                <Button name="Hard" changeDifficulty={changeDifficulty} option={12} />
             </div>
-            <h1 className="text-3xl text-center mt-3 mb-4">Memory game</h1>
-            <p className="text-center text-xl mb-5">{count}</p>
-            <div className="w-[400px] lg:w-[550px]">
+
+            <h1 className="text-3xl text-center mt-4 mb-4">Memory game</h1>
+            <p className="text-center text-xl mb-5">Počet tahů: {count}</p>
+
+            <div className={`w-[300px] 
+                             ${option === 3 && "sm:w-[400px] "}
+                             ${option === 6 && "md:w-[550px]"}
+                             ${option === 12 && "sm:w-[550px] lg:w-[800px]"} `}>
                 <div className="flex flex-wrap gap-1 justify-center">
                     {dataArray.map((card) => {
-
                         return <Card image={card.image}
                             audio={card.sound}
                             key={card.id}
                             toggled={card === firstCard || card === secondCard || card.matched === true}
                             item={card}
+                            option={option}
                             handleSelectedCard={handleSelectedCard} />
                     })}
                 </div>
+
                 <div className="text-center mt-4">
                     <p>Nejlepší skóre: {score}</p>
                 </div>
-                    {gameOver && <button className="block mx-auto bg-green-700 px-2 py-1 rounded-md mt-2" onClick={newGame}>Nová hra</button>}
+
+                {gameOver && <button className="block mx-auto bg-green-700 px-2 py-1 rounded-md mt-2" onClick={newGame}>Nová hra</button>}
             </div>
         </div>
     )

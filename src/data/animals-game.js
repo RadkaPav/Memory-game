@@ -27,74 +27,74 @@ import audio12 from "../images-sounds/animals/hippo.mp3"
 const animals = [
     {
         name: "sheep",
-        image: "image1",
-        sound: "audio1",
+        image: image1,
+        sound: audio1,
         matched: false
     },
     {
         name: "elephant",
-        image: "image2",
-        sound: "audio2",
+        image: image2,
+        sound: audio2,
         matched: false
     },
     {
         name: "giraffe",
-        image: "image3",
-        sound: "audio3",
+        image: image3,
+        sound: audio3,
         matched: false
     },
     {
         name: "panda",
-        image: "image4",
-        sound: "audio4",
+        image: image4,
+        sound: audio4,
         matched: false
     },
     {
         name: "squirrel",
-        image: "image5",
-        sound: "audio5",
+        image: image5,
+        sound: audio5,
         matched: false
     },
     {
         name: "whale",
-        image: "image6",
-        sound: "audio6",
+        image: image6,
+        sound: audio6,
         matched: false
     },
     {
         name: "rabbit",
-        image: "image7",
-        sound: "audio7",
+        image: image7,
+        sound: audio7,
         matched: false
     },
     {
         name: "fox",
-        image: "image8",
-        sound: "audio8",
+        image: image8,
+        sound: audio8,
         matched: false
     },
     {
         name: "lion",
-        image: "image9",
-        sound: "audio9",
+        image: image9,
+        sound: audio9,
         matched: false
     },
     {
         name: "tiger",
-        image: "image10",
-        sound: "audio10",
+        image: image10,
+        sound: audio10,
         matched: false
     },
     {
         name: "koala",
-        image: "image11",
-        sound: "audio11",
+        image: image11,
+        sound: audio11,
         matched: false
     },
     {
         name: "hippo",
-        image: "image12",
-        sound: "audio12",
+        image: image12,
+        sound: audio12,
         matched: false
     }
 ]
