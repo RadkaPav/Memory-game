@@ -1,4 +1,4 @@
-import back from "../images/back.png"
+import back from "../images-sounds/back.png"
 
 const Card = ( {item, image, toggled, handleSelectedCard} ) => {
     
