@@ -1,6 +1,6 @@
 import Card from "./Card"
 import Button from "./Button"
-import data from "../data/animals-game"
+import data from "../data/animals-game.js"
 import { useState, useEffect } from "react"
 
 const GameBoard = () => {
@@ -72,7 +72,7 @@ const GameBoard = () => {
         }
         if (dataArray.every(item => item.matched)) {
             setGameOver(true)
-            if (count < score || score === null) {
+            if (count !== 0 && (count < score || score === null)) {
                 setScore(count)
                 if (option === 3) localStorage.setItem("score3", count)
                 else if (option === 6) localStorage.setItem("score6", count)
@@ -88,9 +88,9 @@ const GameBoard = () => {
     return (
         <div>
             <div className="flex justify-evenly">
-                <Button name="Easy" changeDifficulty={changeDifficulty} option={3} />
-                <Button name="Medium" changeDifficulty={changeDifficulty} option={6} />
-                <Button name="Hard" changeDifficulty={changeDifficulty} option={12} />
+                <Button name="Easy" changeDifficulty={changeDifficulty} id={3} option={option} />
+                <Button name="Medium" changeDifficulty={changeDifficulty} id={6} option={option} />
+                <Button name="Hard" changeDifficulty={changeDifficulty} id={12} option={option} />
             </div>
 
             <h1 className="text-3xl text-center mt-4 mb-4">Memory game</h1>
