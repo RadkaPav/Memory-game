@@ -1,3 +1,12 @@
+# MEMORY GAME
+Hra pexeso vytvořená v React.js. Na výběr ze tří možností obtížnosti. Při otočení kartičky se spustí zvuková nahrávka. Hra počítá počet tahů a ukládá nejlepší skóre do Local Storage.
+
+## Screenshots
+![Snímek obrazovky 2024-06-02 164535](https://github.com/RadkaPav/Memory-game/assets/153281974/6c92648b-e50f-4bae-8e35-0bd19ae25c6f)
+![Snímek obrazovky 2024-06-02 164109](https://github.com/RadkaPav/Memory-game/assets/153281974/8fc80bfb-be9a-422b-b5d5-8b9050f17197)
+![Snímek obrazovky 2024-06-02 164132](https://github.com/RadkaPav/Memory-game/assets/153281974/266ddb6f-0883-4b7e-b56e-a1cff3b991c2)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
