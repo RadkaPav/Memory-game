@@ -26,6 +26,7 @@ const GameBoard = () => {
 
     const changeDifficulty = (option) => {
         setOption(option)
+        setCount(0)
         createArray(option)
     }
 
